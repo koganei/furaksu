@@ -1,13 +1,15 @@
 module.exports = {
+    parser: 'babel-eslint',
     extends: 'google',
     plugins: [
         'react'
     ],
     ecmaFeatures: {
+        classes: true,
         jsx: true
     },
     rules: {
-        "indent": 0,
+        'indent': 0,
         'react/display-name': 1,
         'react/forbid-prop-types': 1,
         'react/jsx-boolean-value': 1,
@@ -28,7 +30,6 @@ module.exports = {
         'react/jsx-uses-react': 1,
         'react/jsx-uses-vars': 1,
         'react/no-danger': 1,
-        'react/no-deprecated': 1,
         'react/no-did-mount-set-state': 1,
         'react/no-did-update-set-state': 1,
         'react/no-direct-mutation-state': 1,

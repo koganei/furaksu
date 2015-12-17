@@ -1,0 +1,12 @@
+import React from 'react';
+
+export default React.createClass({
+    render: () => {
+        return (
+            <select>
+                <option>1</option>
+                <option>2</option>
+            </select>
+        );
+    }
+});

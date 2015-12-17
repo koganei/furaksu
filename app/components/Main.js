@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Menu from './Menu';
 
 let Main = React.createClass({
     render: () => {
         return (
-            <div>
-                Tests
-            </div>
+            <Menu />
         );
     }
 });

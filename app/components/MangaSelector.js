@@ -6,7 +6,9 @@ export default class MangaSelector extends React.Component {
     render() {
         return (
             <select>
-                {[1, 2, 3].map(option => <option>{option}</option>)}
+                {[1, 2, 3].map(
+                    (option, i) => <option key={i}>{option}</option>
+                )}
             </select>
         );
     }

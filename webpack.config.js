@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     entry: './app/components/Main.js',
     output: {
@@ -6,7 +8,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: __dirname + '/app',
+                test: path.join(__dirname, '/app'),
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {

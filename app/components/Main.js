@@ -4,9 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Menu from './Menu';
 
-
-let data = [1, 2, 3];
-
 export default class Main extends React.Component {
     displayName = 'Main';
     
@@ -23,6 +20,6 @@ export default class Main extends React.Component {
 }
 
 ReactDOM.render(
-    React.createElement(Main, {data: data}), 
+    React.createElement(Main),
     document.getElementById('app')
 );

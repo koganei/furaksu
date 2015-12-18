@@ -10,6 +10,7 @@ module.exports = {
     },
     rules: {
         'indent': 0,
+        'no-trailing-spaces': 0,
         'react/display-name': 1,
         'react/forbid-prop-types': 1,
         'react/jsx-boolean-value': 1,

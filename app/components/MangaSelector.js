@@ -1,26 +1,31 @@
 import React from 'react';
+import MangaStore from '../stores/MangaStore';
 
 export default class MangaSelector extends React.Component {
     displayName = 'MangaSelector';
+    state = {titles: []};
 
     constructor(props) {
         super(props);
+        this.updateState();
         
-        setTimeout(() => {
-            this.getTitles().then(titles => {
-                this.setState({titles});
-            });
-        }, 1000);
-        
-        this.state = {titles: []};
+        MangaStore.addChangeListener(() => {
+            this.updateState();
+        });
+    }
+    
+    updateState() {
+        this.getTitles().then(titles => {
+            this.setState({titles});
+        });
+    }
+    
+    componentDidMount() {
+        console.log('mounted component', this.displayName);
     }
     
     getTitles() {
-        return Promise.resolve([1, 2, 3]);
-    }
-
-    componentDidMount() {
-        console.log('mounted component', this.displayName);
+        return Promise.resolve(MangaStore.getAll());
     }
 
     render() {

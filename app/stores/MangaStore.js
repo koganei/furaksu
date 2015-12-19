@@ -52,8 +52,8 @@ function select(manga) {
 class MangaStore extends EventEmitter {
 	
 	constructor(props) {
-		super(props);
-		this.dispatcherIndex = AppDispatcher.register(this.handleAction);
+        super(props);
+        this.dispatcherIndex = AppDispatcher.register(this.handleAction);
         this.addMangaContinuously();
 	}
     
@@ -66,21 +66,21 @@ class MangaStore extends EventEmitter {
     }
 	
 	handleAction(payload) {
-		switch (payload.actionType) {
-			case ActionConstants.VIEW_MANGA:
-				select(payload.manga);
-				break;
-			default:
-				console.log('action type not handled', payload.actionType);
-		}
-	}
-	
+        switch (payload.actionType) {
+            case ActionConstants.VIEW_MANGA:
+                select(payload.manga);
+                break;
+            default:
+                console.log('action type not handled', payload.actionType);
+        }
+    }
+
 	getAll() {
-		return mangas;
+        return mangas;
 	}
 	
 	getSelected() {
-		return selected;
+        return selected;
 	}
     
     emitChange() {

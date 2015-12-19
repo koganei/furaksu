@@ -15,7 +15,7 @@ let selected = mangas[0];
  * @param {String} manga.title
  */
 function create(manga) {
-	mangas[manga.id] = manga;
+	mangas.push(manga);
 }
 
 /**
@@ -25,8 +25,8 @@ function create(manga) {
  * @param {Number|String} manga.id
  * @param {String} manga.title
  */
-function update(manga) {
-	mangas[manga.id] = manga;
+function update(id, manga) {
+	mangas[id] = manga;
 }
 
 /**
@@ -35,8 +35,8 @@ function update(manga) {
  * @param {Object} mangas with id in key
  */
 function updateAll(mangas) {
-	for (let manga in mangas) {
-		this.update(manga);
+	for (let {id, manga} in mangas) {
+		this.update(id, manga);
 	}
 }
 
@@ -57,9 +57,13 @@ class MangaStore extends EventEmitter {
         this.addMangaContinuously();
 	}
     
+    getSize() {
+        return mangas.length;
+    }
+    
     addMangaContinuously() {
         setTimeout(() => {
-            mangas.push(mangas.length+1);
+            create(this.getSize() + 1);
             this.emitChange();
             this.addMangaContinuously();
         }, 1000);

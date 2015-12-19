@@ -2,7 +2,14 @@ import {EventEmitter} from 'events';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionConstants from '../constants/MangaConstants';
 
-const mangas = [1, 2, 3];
+const mangas = [{
+    title: 'Naruto'
+}, {
+    title: 'One Piece'
+}, {
+    title: 'Kaiji'
+}];
+
 const CHANGE_EVENT = 'change';
 
 let selected = mangas[0];
@@ -14,7 +21,7 @@ let selected = mangas[0];
  * @param {Number|String} manga.id
  * @param {String} manga.title
  */
-function create(manga) {
+function createManga(manga) {
 	mangas.push(manga);
 }
 
@@ -25,7 +32,7 @@ function create(manga) {
  * @param {Number|String} manga.id
  * @param {String} manga.title
  */
-function update(id, manga) {
+function updateManga(id, manga) {
 	mangas[id] = manga;
 }
 
@@ -34,7 +41,7 @@ function update(id, manga) {
  * 
  * @param {Object} mangas with id in key
  */
-function updateAll(mangas) {
+function updateMangas(mangas) {
 	for (let {id, manga} in mangas) {
 		this.update(id, manga);
 	}
@@ -54,7 +61,7 @@ class MangaStore extends EventEmitter {
 	constructor(props) {
         super(props);
         this.dispatcherIndex = AppDispatcher.register(this.handleAction);
-        this.addMangaContinuously();
+        // this.addMangaContinuously();
 	}
     
     getSize() {
@@ -63,7 +70,7 @@ class MangaStore extends EventEmitter {
     
     addMangaContinuously() {
         setTimeout(() => {
-            create(this.getSize() + 1);
+            createManga(this.getSize() + 1);
             this.emitChange();
             this.addMangaContinuously();
         }, 1000);

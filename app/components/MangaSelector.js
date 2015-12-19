@@ -1,5 +1,5 @@
 import React from 'react';
-import MangaStore from '../stores/MangaStore';
+import store from '../stores/MangaStore';
 
 export default class MangaSelector extends React.Component {
     displayName = 'MangaSelector';
@@ -9,7 +9,7 @@ export default class MangaSelector extends React.Component {
         super(props);
         this.updateState();
         
-        MangaStore.addChangeListener(() => {
+        store.addChangeListener(() => {
             this.updateState();
         });
     }
@@ -25,21 +25,25 @@ export default class MangaSelector extends React.Component {
     }
     
     getTitles() {
-        return Promise.resolve(MangaStore.getAll());
+        return Promise.resolve(store.getAll());
+    }
+    
+    onSelectionChange(event) {
+        console.log('fired', event.target.value);   
     }
 
     render() {
         console.log('rendering', this.displayName);
         return (
-            <ul>
+            <select onChange={this.onSelectionChange}>
                 {this.state.titles.map(
-                    (option, i) =>
-                        <li
+                    ({title}, i) =>
+                        <option
                             key={i}
-                            value={option}
-                        >{option}</li>
+                            value={title}
+                        >{title}</option>
                 )}
-            </ul>
+            </select>
         );
     }
 }

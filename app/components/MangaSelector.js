@@ -31,15 +31,15 @@ export default class MangaSelector extends React.Component {
     render() {
         console.log('rendering', this.displayName);
         return (
-            <select>
+            <ul>
                 {this.state.titles.map(
                     (option, i) =>
-                        <option
+                        <li
                             key={i}
                             value={option}
-                        >{option}</option>
+                        >{option}</li>
                 )}
-            </select>
+            </ul>
         );
     }
 }

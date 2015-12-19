@@ -59,10 +59,10 @@ class MangaStore extends EventEmitter {
     
     addMangaContinuously() {
         setTimeout(() => {
-            mangas.push(mangas.length);
+            mangas.push(mangas.length+1);
             this.emitChange();
             this.addMangaContinuously();
-        }, 2000);
+        }, 1000);
     }
 	
 	handleAction(payload) {

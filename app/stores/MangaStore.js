@@ -59,6 +59,7 @@ function select(manga) {
 class MangaStore extends EventEmitter {
 	
 	constructor(props) {
+        console.log('building store');
         super(props);
         this.dispatcherIndex = AppDispatcher.register(this.handleAction);
         // this.addMangaContinuously();
@@ -70,8 +71,9 @@ class MangaStore extends EventEmitter {
     
     addMangaContinuously() {
         setTimeout(() => {
-            createManga(this.getSize() + 1);
+            createManga({id: this.getSize() + 1, title: 'manga ' + this.getSize() + 1});
             this.emitChange();
+            console.log('added');
             this.addMangaContinuously();
         }, 1000);
     }

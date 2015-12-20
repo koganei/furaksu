@@ -2,7 +2,7 @@ import React from 'react';
 import MangaSelector from './MangaSelector';
 
 export default class Menu extends React.Component {
-    displayName = 'Menu';
+    displayName: string = 'Menu';
 
     componentDidMount() {
         console.log('mounted component', this.displayName);

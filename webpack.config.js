@@ -1,9 +1,15 @@
 const path = require('path');
 
 module.exports = {
-    entry: './app/components/Main.js',
+    entry: [  
+      'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8080',
+      path.resolve(__dirname, 'app/components/Main.js')
+    ],
     output: {
-        filename: 'public/bundle.js'
+        path: path.resolve(__dirname, 'public/'),
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     module: {
         loaders: [
